@@ -1,6 +1,6 @@
 #手把手教你用GoEasy实现Websocket IM聊天       
 经常有朋友问起GoEasy如何实现IM，今天就手把手的带大家从头到尾用GoEasy实现一个完整IM聊天，全套代码已经放在了github。    
-![image](./imgs/chat_login.png) ![image](./imgs/chat_demo_friends.png) ![image](./imgs/chat_demo_chatBox.png)
+![image](./imgs/chat_demo_login.png) ![image](./imgs/chat_demo_friends.png) ![image](./imgs/chat_demo_chatBox.png)
 
 作为一名程序员，在编码之前，首先要做的当然是架构设计！什么？确认不是装逼？当然，别忘了星爷的那句话：我是一名程序员！没有思想的程序员，跟咸鱼有什么区别呢？   
 ![image](./imgs/chat_demo_jiagou_book.png)
