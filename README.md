@@ -58,7 +58,7 @@ subscriber（接收消息），subscriberPrencense（接受上下线通知），
 
 哼！这难道不是纸上谈兵吗？Talk is cheap, show me the code! 优雅的代码在哪里呢？
 
-别着急，当然有全套代码拉，如果放个zip文件的下载连接，显得B格太低，老规矩，github见: xxxx
+别着急，当然有全套代码拉，如果放个zip文件的下载连接，显得B格太低，老规矩，github见: https://github.com/GoEasySupport/goeasy-chat-demo       
 
 **注意事项：**       
 1. 在restapi.js 里 可以找到用户名和密码     

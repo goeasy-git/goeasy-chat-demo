@@ -56,8 +56,8 @@ function Service() {
     //自己订阅
     this.initialGoEasyAndFriends = function () {
         goeasy = new GoEasy({
-            appkey: "BC-b99179387f32466797e346c08ceebb8c",
-            host: "testhangzhou.goeasy.io",
+            appkey: "您的AppKey",
+            host: "hangzhou.goeasy.io",
             userId: this.currentUser.uuid,
             userData: '{"username":"' + this.currentUser.username + '","avatar":"' + this.currentUser.avatar + '"}'
         });
