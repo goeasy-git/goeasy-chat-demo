@@ -1,7 +1,10 @@
 # 手把手教你用GoEasy实现Websocket IM聊天       
 本文会持续更新，最新版本请访问https://github.com/GoEasySupport/goeasy-chat-demo    
 
-经常有朋友问起GoEasy如何实现IM，今天就手把手的带大家从头到尾用GoEasy实现一个完整IM聊天，全套代码已经放在了github。    
+经常有朋友问起GoEasy如何实现IM，今天就手把手的带大家从头到尾用GoEasy实现一个完整IM聊天，全套代码已经放在了github。
+
+今日的前端技术发展可谓百花争鸣，为了确保本文能帮助到使用任何技术栈的前端工程师，Demo的源码实现上选择了最简单的HTML+JQuery的方式，所以,不论您是准备用Uniapp开发移动APP，还是准备写个小程序，不论你喜欢用React还是VUE，还是React-native或ionic, 或者您直接用原生Javascript和Typescript，都是可以轻松理解，全套代码已经放在github上了，下载后不需要搭建任何环境，直接用浏览器打开，就可以用来聊天了。        
+    
 ![image](./readme_imgs/chat_demo_login.jpg) ![image](./readme_imgs/chat_demo_friends.jpg) ![image](./readme_imgs/chat_demo_chatBox.jpg)
 
 作为一名程序员，在编码之前，首先要做的当然是架构设计！什么？确认不是装逼？当然，别忘了星爷的那句话：我是一名程序员！没有思想的程序员，跟咸鱼有什么区别呢？   
