@@ -67,7 +67,7 @@ subscriber（接收消息），subscriberPrencense（接受上下线通知），
 
 **注意事项：**       
 1. 在restapi.js 里 可以找到用户名和密码     
-2. appkey要换成您自己的common key      
+2. 在service.js里将appkey替换为您自己的common key      
 3. subscriberPrencense和hereNowByUserIds这两个方法，默认是关闭的，需要扫码添加GoEasy客服开通哦~      
 
 将代码与本文一起对照阅读后，要写个IM，比画个0还简单，如果使用的是其他的前端技术框架如小程序和Reactnative，只需要重新画个外壳就好了！什么,你不相信？如果觉得你被骗了，请扫码添加微信好友，欢迎吐槽！没有您暴风雨般的吐槽和春风一般的赞美，我如何进步呢？      
