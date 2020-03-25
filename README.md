@@ -65,7 +65,7 @@ subscriber（接收消息），subscriberPrencense（接受上下线通知），
 
 别着急，当然有全套代码拉，如果放个zip文件的下载连接，显得B格太低，老规矩，github见: https://github.com/GoEasySupport/goeasy-chat-demo       
 
-**注意事项：**       
+**<font color=red>注意事项：</font>**       
 1. 在restapi.js 里 可以找到用户名和密码     
 2. 在service.js里将appkey替换为您自己的common key      
 3. subscriberPrencense和hereNowByUserIds这两个方法，默认是关闭的，需要扫码添加GoEasy客服开通哦~      
@@ -73,7 +73,7 @@ subscriber（接收消息），subscriberPrencense（接受上下线通知），
 将代码与本文一起对照阅读后，要写个IM，比画个0还简单，如果使用的是其他的前端技术框架如小程序和Reactnative，只需要重新画个外壳就好了！什么,你不相信？如果觉得你被骗了，请扫码添加微信好友，欢迎吐槽！没有您暴风雨般的吐槽和春风一般的赞美，我如何进步呢？      
 ![image](./readme_imgs/chat_demo_wechat_qrcode.png)    
 
-**彩弹在最后：**  
+**<font color=red>彩弹在最后：</font>**  
 看了代码的你，是不是发现我们的RESTAPI其实是个冒牌货，并不会真的和远程的某个服务器交互，这是为了方便演示，我们定义了两个变量来帮助模拟远程数据的查询，然后用localstorage来模拟服务器的保存，相信聪明的你，肯定已经get到我们的代码思路了。
 
  
