@@ -59,7 +59,16 @@ function Service() {
             appkey: "您的AppKey",
             host: "hangzhou.goeasy.io",
             userId: this.currentUser.uuid,
-            userData: '{"username":"' + this.currentUser.username + '","avatar":"' + this.currentUser.avatar + '"}'
+            userData: '{"username":"' + this.currentUser.username + '","avatar":"' + this.currentUser.avatar + '"}',
+            onConnected: function () {
+                console.log("GoEasy connect successfully.")
+            },
+            onDisconnected: function () {
+                console.log("GoEasy disconnected.")
+            },
+            onConnectFailed: function (error) {
+                alert("GoEasy连接失败，请确认service.js文件59行appkey和host配置正确.");
+            }
         });
         this.initialFriendList();
         this.subscriberFriendPrencenseAndNewMessage();
