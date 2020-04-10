@@ -30,7 +30,7 @@ OK, 有了如此清晰而优秀的代码结构分层设计，就差一段优雅�
 1.2. 将controller层的onNewMessage, onFriendOnline，onFriendOffline赋值给service 。   
 1.3. new goeasy建立长连接，记得要传入userid。如需在subscriberPrencese用户上下线提醒事件，或者在调用HereNow获取在线用户列表时，能拿到userId以外，更多的信息，可以在userdata里传入。     
 1.4. 调用restapi，查询该用户的好友列表，根据结果初始化本地好友列表friendlist。  
-1.5. 循环好友，以friendUUID为channel，调用subscriberPrencense，监听所有好友的上下线事件。    
+1.5. 将所有有监听的好友的friendUUID放入一个数组，调用subscriberPrencense，监听所有好友的上下线事件。    
 1.6. 以当前用户的uuid为channel，调用subscriber，监听来自所有好友发来的消息。     
 1.7. 显示好友列表界面。       
 1.8. 初始化好友的在线状态，以数组形式传入所有好友的userId，调用hereNowByUserIds，获得当前在线的好友列表，根据结果将friendlist里属于在线状态的friend的在线状态改为true，同时将界面上在线用户的头像改为彩色。
