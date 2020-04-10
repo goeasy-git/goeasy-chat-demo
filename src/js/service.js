@@ -86,26 +86,33 @@ function Service() {
     };
     // 所有的朋友订阅上下线,并且根据sessionId订阅，uuid作为channel
     this.subscriberFriendPrencenseAndNewMessage = function () {
+
+        //将好友的uuid放入一个数组
+        var friendUUIDs = [];
         this.friendList.forEach(function (friend) {
-            goeasy.subscribePresence({
-                channel: friend.uuid,
-                onPresence: function (presenceEvents) {
-                    presenceEvents.events.forEach(function (event) {
-                        var friendUUid = event.userId;
-
-                        var localFriend = self.findLocalFriendByUUID(friendUUid);
-
-                        if (event.action == "join" || event.action == "online") {
-                            localFriend.online = true;
-                            onFriendOnline(friendUUid);
-                        } else {
-                            localFriend.online = false;
-                            onFriendOffline(friendUUid);
-                        }
-                    });
-                }
-            });
+            friendUUIDs.push(friend.uuid);
         });
+
+        //监听所有好友上下溪
+        goeasy.subscribePresence({
+            channels: friendUUIDs,
+            onPresence: function (presenceEvents) {
+                presenceEvents.events.forEach(function (event) {
+                    var friendUUid = event.userId;
+
+                    var localFriend = self.findLocalFriendByUUID(friendUUid);
+
+                    if (event.action == "join" || event.action == "online") {
+                        localFriend.online = true;
+                        onFriendOnline(friendUUid);
+                    } else {
+                        localFriend.online = false;
+                        onFriendOffline(friendUUid);
+                    }
+                });
+            }
+        });
+
 
         // 接收消息
         goeasy.subscribe({
