@@ -1,14 +1,31 @@
 body,
 html {
 	margin: 0;
-	height:100%;
-	padding:0px;
+	height: 100%;
+	padding: 0px;
 	font-family: Source Han Sans CN;
 }
+
+.toast {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	width: 200px;
+	height: 100px;
+	background: #f0f0f0;
+	margin: -50px -100px;
+	color: red;
+	display: none;
+	font-size: 16px;
+	text-align: center;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
 /*手机版*/
-@media screen and (max-width: 480px){
+@media screen and (max-width: 480px) {
 	#app {
-		height:100%;
+		height: 100%;
 		color: #2c3e50;
 		-moz-osx-font-smoothing: grayscale;
 		-webkit-font-smoothing: antialiased;

@@ -40,6 +40,8 @@ function Service() {
     this.onFriendOffline = function () {
         // 好友下线
     };
+    this.onShowToast = function (message) {
+    }
 
 
     this.login = function (username, password) {
@@ -56,7 +58,7 @@ function Service() {
     //自己订阅
     this.initialGoEasyAndFriends = function () {
         goeasy = new GoEasy({
-            appkey: "您的AppKey",
+            appkey: "您的key",
             host: "hangzhou.goeasy.io",
             userId: this.currentUser.uuid,
             userData: '{"username":"' + this.currentUser.username + '","avatar":"' + this.currentUser.avatar + '"}',
@@ -93,7 +95,7 @@ function Service() {
             friendUUIDs.push(friend.uuid);
         });
 
-        //监听所有好友上下溪
+        //监听所有好友上下线
         goeasy.subscribePresence({
             channels: friendUUIDs,
             onPresence: function (presenceEvents) {
@@ -110,6 +112,10 @@ function Service() {
                         onFriendOffline(friendUUid);
                     }
                 });
+            },
+            onSuccess: function () {
+                console.log("您还没有高级功能的权限，付费用户请联系GoEasy开通")
+                self.onShowToast("您还没有高级功能的权限，付费用户请联系GoEasy开通")
             }
         });
 
@@ -162,6 +168,10 @@ function Service() {
                     friend.online = true;
                     onFriendOnline(friend.uuid);//不得已而为之的代码
                 });
+            }
+            if (result.code == 401) {
+                console.log("您还没有高级功能的权限，付费用户请联系GoEasy开通")
+                self.onShowToast("您还没有高级功能的权限，付费用户请联系GoEasy开通")
             }
         });
     };

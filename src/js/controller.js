@@ -28,6 +28,7 @@ function login() {
         chatService.onNewChatMessage = onNewChatMessage;
         chatService.onFriendOnline = onFriendOnline;
         chatService.onFriendOffline = onFriendOffline;
+        chatService.onShowToast = showToast;
 
         //初始化GoEasy和本地好友列表
         chatService.initialGoEasyAndFriends();
@@ -237,4 +238,26 @@ function sendChatMessage(friendUUID) {
         //发送消息后输入框清空
         messageInputBox.val("");
     }
+}
+
+//全局计时器
+var timer = null;
+
+//显示提示框
+function showToast(message) {
+    return function () {
+        if (timer) {
+            return;
+        }
+        $('.toast').show().append(message);
+        timer = setTimeout(function () {
+            hideToast();
+            timer = null;
+        }, 6000)
+    }()
+}
+
+//隐藏提示框
+function hideToast() {
+    $('.toast').hide().empty();
 }
