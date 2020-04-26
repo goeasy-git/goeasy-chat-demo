@@ -112,10 +112,6 @@ function Service() {
                         onFriendOffline(friendUUid);
                     }
                 });
-            },
-            onSuccess: function () {
-                console.log("您还没有高级功能的权限，付费用户请联系GoEasy开通")
-                self.onShowToast("您还没有高级功能的权限，付费用户请联系GoEasy开通")
             }
         });
 
