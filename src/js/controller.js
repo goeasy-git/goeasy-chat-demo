@@ -190,7 +190,7 @@ function switchToPrivateChat(friend) {
     //绘制聊天消息
     var messages = chatService.getPrivateMessages(friend.uuid);
     if (messages.length != 0) {
-        drawPrivateChatMessage(messages)
+        drawPrivateChatMessage(messages, true)
     }
 }
 
@@ -219,7 +219,7 @@ function switchToGroupChat(group) {
 
     //绘制界面聊天消息
     var messages = chatService.getGroupMessages(group.uuid)
-    drawGroupChatMessage(messages)
+    drawGroupChatMessage(messages, true)
 }
 
 //私聊回到联系人
@@ -253,7 +253,7 @@ function loadPrivateHistory() {
     this.chatService.loadPrivateHistoryMessage(currentPage.currentChatFriend.uuid, earliestMessageTimeStamp)
 }
 
-//监听私聊消息加载
+//监听私聊历史消息加载
 function onPrivateHistoryLoad(friendId, messages) {
     if (messages.length == 0) {
         $('#top').html('已经没有更多的历史消息');
@@ -265,7 +265,7 @@ function onPrivateHistoryLoad(friendId, messages) {
 }
 
 //绘制界面私聊消息
-function drawPrivateChatMessage(privateMessages) {
+function drawPrivateChatMessage(privateMessages, scrollToBottom) {
     var chatBoxContent = $("#chat-box-content");
     chatBoxContent.empty();
     privateMessages.forEach(function (message) {
@@ -288,7 +288,7 @@ function drawPrivateChatMessage(privateMessages) {
     });
 
     //将滚动条拉到最下
-    $('#chat-box-content').scrollTop($('#chat-box-content').scrollHeight);
+    scrollToBottom && $('#private-box').scrollTop($('#private-box')[0].scrollHeight);
 }
 
 //群聊回到联系人
@@ -335,7 +335,7 @@ function onGroupHistoryLoad(groupId, messages) {
 }
 
 //绘制群聊界面消息
-function drawGroupChatMessage(groupMessages) {
+function drawGroupChatMessage(groupMessages, scrollToBottom) {
     var currentUser = chatService.currentUser;
     var chatBoxContent = $("#group-chat-box-content");
     chatBoxContent.empty();
@@ -362,7 +362,7 @@ function drawGroupChatMessage(groupMessages) {
     });
 
     //将滚动条拉到最下
-    $('#chat-box-content').scrollTop($('#group-chat-box-content')[0].scrollHeight);
+    scrollToBottom && $('#group-box').scrollTop($('#group-box')[0].scrollHeight);
 }
 
 //监听接收私聊消息
@@ -372,7 +372,7 @@ function onNewPrivateMessageReceive(friendId, chatMessage) {
     if (currentPage.page == Pages.contacts) {
         drawFriendList(chatService.friends)
     } else {
-        drawPrivateChatMessage(chatService.getPrivateMessages(friendId))
+        drawPrivateChatMessage(chatService.getPrivateMessages(friendId), true)
     }
 }
 
@@ -386,7 +386,7 @@ function onNewGroupMessageReceive(groupId, chatMessage) {
         groupItem.find(".message-count").text(group.unReadMessage);
         groupItem.find(".friend-item-message-badge").show();
     } else {
-        drawGroupChatMessage(chatService.getGroupMessages(groupId))
+        drawGroupChatMessage(chatService.getGroupMessages(groupId), true)
     }
 }
 
