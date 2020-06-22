@@ -84,11 +84,14 @@
     <!--群聊 聊天框-->
     <div class="chat-box" id="group-chat-box" style="display: none;">
         <div class="chat-box-current-friend">
-            <!--当前聊天的好友-->
+            <!--当前聊天的群-->
             <div class="exit-current-chat-box" id="group-exit-current-chat-box" onclick="groupChatBackToContacts()">
                 <img src="images/Arrow-Left.png" class="exit-icon"/>
             </div>
             <span class="current-friend-name"></span>
+            <div class="group-member" onclick="showGroupMember()">
+                <img src="images/group-icon.png">
+            </div>
         </div>
         <div class="chat-box-content">
             <div id="group-top" onclick="loadGroupHistory()">加载更多历史消息</div>
@@ -104,6 +107,18 @@
                     <button type="submit" class="send-btn" id="groupSendMessageButton">发送</button>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="group-member-layer">
+        <div class="chat-box-current-friend">
+            <!--当前聊天的群-->
+            <div class="exit-current-chat-box" onclick="hideGroupMember()">
+                <img src="images/Arrow-Left.png" class="exit-icon"/>
+            </div>
+            <span class="current-friend-name group-member-amount"></span>
+        </div>
+        <div class="layer-container">
         </div>
     </div>
     <!--所有需要的模板-->

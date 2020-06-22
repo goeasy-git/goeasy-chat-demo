@@ -397,6 +397,23 @@ function onGroupListChange(groups) {
     drawGroupList(groups)
 }
 
+//显示群成员
+function showGroupMember() {
+    $('#group-member-layer').show();
+    var members = chatService.getGroupMembers(currentPage.currentChatGroup.uuid);
+    $('.group-member-amount').html("成员(" + Object.keys(members).length + ')')
+    let str = "";
+    for (var key in members) {
+        str += '<img src="' + members[key].avatar + '"/>'
+    }
+    $('.layer-container').html(str)
+}
+
+//隐藏群成员
+function hideGroupMember() {
+    $('#group-member-layer').hide();
+}
+
 //全局计时器
 var timer = null;
 
