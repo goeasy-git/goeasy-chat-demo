@@ -3,13 +3,14 @@
 <head>
     <meta charset="utf-8">
     <title>登录页面</title>
-    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
-    <script src="js/restapi.js"></script>
-    <script src="js/service.js"></script>
-    <script src="js/controller.js"></script>
+    <meta name="viewport"
+          content="width=device-width,height=device-height,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <script src="lib/goeasy-im.js"></script>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
-    <script src="lib/goeasy-1.0.6.js"></script>
+    <script src="js/restapi.js"></script>
+    <script src="js/imservice.js"></script>
+    <script src="js/controller.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
 </head>
 <body>
 <div id="app">
@@ -25,7 +26,7 @@
                     <input type="password" placeholder="请输入密码" name="password" class="login-input" id="password" />
                 </div>
                 <div class="login-error-box" id="login-error-box" style="display: none;">
-                    <img class="error-icon" src="img/Vector.png">
+                    <img class="error-icon" src="images/Vector.png">
                     <span class="error-info">请输入正确的用户名和密码</span>
                 </div>
                 <div class="login-btn-box">
@@ -39,7 +40,7 @@
     <!-- 好友列表 -->
     <div id="friends-box" style="display: none;">
         <div class="friends-box-title">
-            <span>GoEasy</span>
+            <span>联系人</span>
         </div>
         <div class="current-user-box">
             <div class="current-user-icon" id="current-user-icon">
@@ -51,19 +52,23 @@
         <div id="friend-list">
             <!--好友列表-->
         </div>
+        <div id="group-list">
+            <!--群列表-->
+        </div>
     </div>
-    <!--聊天框-->
+    <!--私聊 聊天框-->
     <div class="chat-box" id="chat-box" style="display: none;">
         <div class="chat-box-current-friend">
             <!--当前聊天的好友-->
-            <div class="exit-current-chat-box" id="exit-current-chat-box" onclick="switchToUserList()">
-                <img src="img/Arrow-Left.png" class="exit-icon"/>
+            <div class="exit-current-chat-box" id="exit-current-chat-box" onclick="privateChatBackToContacts()">
+                <img src="images/Arrow-Left.png" class="exit-icon"/>
             </div>
             <span class="current-friend-name"></span>
         </div>
-        <div class="chat-box-content" id="chat-box-content">
+        <div class="chat-box-content">
+            <div id="top" onclick="loadPrivateHistory()">加载更多历史消息</div>
             <!-- 历史消息或者新发消息 -->
-
+            <div id="chat-box-content"></div>
         </div>
         <div class="chat-send-box">
             <div class="chat-send-box-info">
@@ -72,6 +77,31 @@
                 </div>
                 <div class="send-box-btn">
                     <button type="submit" class="send-btn" id="sendMessageButton">发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--群聊 聊天框-->
+    <div class="chat-box" id="group-chat-box" style="display: none;">
+        <div class="chat-box-current-friend">
+            <!--当前聊天的好友-->
+            <div class="exit-current-chat-box" id="group-exit-current-chat-box" onclick="groupChatBackToContacts()">
+                <img src="images/Arrow-Left.png" class="exit-icon"/>
+            </div>
+            <span class="current-friend-name"></span>
+        </div>
+        <div class="chat-box-content">
+            <div id="group-top" onclick="loadGroupHistory()">加载更多历史消息</div>
+            <!-- 历史消息或者新发消息 -->
+            <div id="group-chat-box-content"></div>
+        </div>
+        <div class="chat-send-box">
+            <div class="chat-send-box-info">
+                <div class="input-box">
+                    <input type="text" placeholder="发送消息" class="send-input-box" id="group-send-input-box"/>
+                </div>
+                <div class="send-box-btn">
+                    <button type="submit" class="send-btn" id="groupSendMessageButton">发送</button>
                 </div>
             </div>
         </div>
@@ -85,6 +115,16 @@
                 <span class="friend-name"></span>
             </div>
             <div class="friend-item-message-badge">
+                <span class="message-count"></span>
+            </div>
+        </div>
+        <!--群列表模板-->
+        <div class="friend-item" id="group-item-template">
+            <div class="friend-item-box">
+                <img src="images/group.png" class="friend-avatar"/>
+                <span class="friend-name group-name"></span>
+            </div>
+            <div class="friend-item-message-badge group-item-message-badge">
                 <span class="message-count"></span>
             </div>
         </div>

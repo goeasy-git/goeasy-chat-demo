@@ -263,9 +263,21 @@ html {
 		line-height: 25px;
 		font-style: normal;
 	}
-	.chat-box-content{
-        height:100%;
-		padding-top:80px;
+
+	.chat-box-content {
+		height: 100%;
+		padding: 80px 0;
+		overflow-y: scroll;
+		box-sizing: border-box;
+	}
+
+	#top, #group-top {
+		font-size: 16px;
+		height: 30px;
+		line-height: 30px;
+		color: blue;
+		text-decoration: underline;
+		text-align: center;
 	}
 
 	.chat-box-friend-message-template {
@@ -275,7 +287,7 @@ html {
 
 	.chat-box-friend-content {
 		font-size: 18px;
-		margin-left:15px;
+		margin-left: 15px;
 		line-height: 22px;
 		padding: 10px 10px;
 		border-radius: 6px;
@@ -635,7 +647,7 @@ html {
 	.chat-box-content{
 		height:440px;
 		padding-top: 80px;
-		overflow-y: scroll;
+
 	}
 
 	.chat-box-friend-message-template {
