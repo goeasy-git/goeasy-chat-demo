@@ -51,6 +51,7 @@ function switchToContacts() {
     currentPage.page = Pages.contacts;
     //修改页面的title
     $("title").text("联系人");
+    $('.login').hide()
 
     //初始化当前用户
     currentPage.currentUser = chatService.currentUser;
@@ -323,7 +324,7 @@ function loadGroupHistory() {
 //监听群聊历史消息加载
 function onGroupHistoryLoad(groupId, messages) {
     if (messages.length == 0) {
-        //todo 文字变化
+        $('#group-top').html('已经没有更多的历史消息');
         return
     }
     ;
@@ -412,27 +413,5 @@ function showGroupMember() {
 //隐藏群成员
 function hideGroupMember() {
     $('#group-member-layer').hide();
-}
-
-//全局计时器
-var timer = null;
-
-//显示提示框
-function showToast(message) {
-    return function () {
-        if (timer) {
-            return;
-        }
-        $('.toast').show().append(message);
-        timer = setTimeout(function () {
-            hideToast();
-            timer = null;
-        }, 6000)
-    }()
-}
-
-//隐藏提示框
-function hideToast() {
-    $('.toast').hide().empty();
 }
 
