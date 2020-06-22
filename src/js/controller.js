@@ -65,20 +65,20 @@ function switchToContacts() {
     //获取好友数据
     var friendsMap = chatService.friends;
     //绘制好友列表
-    drawFriendList(friendsMap);
+    renderFriendList(friendsMap);
     //显示好友列表
     $("#friends-box").show();
 
     //获取群数据
     var groupsMap = chatService.groups;
     //绘制群列表
-    drawGroupList(groupsMap);
+    renderGroupList(groupsMap);
     //显示群列表
     $("#group-box").show()
 }
 
 //绘制好友列表
-function drawFriendList(friends) {
+function renderFriendList(friends) {
     var friendListDiv = $("#friend-list");
     friendListDiv.empty();
     for (var key in friends) {
@@ -126,7 +126,7 @@ function drawFriendList(friends) {
 }
 
 //绘制群列表
-function drawGroupList(groups) {
+function renderGroupList(groups) {
     var groupListDiv = $("#group-list");
     groupListDiv.empty();
     for (var key in groups) {
@@ -190,7 +190,7 @@ function switchToPrivateChat(friend) {
     //绘制聊天消息
     var messages = chatService.getPrivateMessages(friend.uuid);
     if (messages.length != 0) {
-        drawPrivateChatMessage(messages, true)
+        renderPrivateChatMessage(messages,true)
     }
 }
 
@@ -219,7 +219,7 @@ function switchToGroupChat(group) {
 
     //绘制界面聊天消息
     var messages = chatService.getGroupMessages(group.uuid)
-    drawGroupChatMessage(messages, true)
+    renderGroupChatMessage(messages,true)
 }
 
 //私聊回到联系人
@@ -253,7 +253,7 @@ function loadPrivateHistory() {
     this.chatService.loadPrivateHistoryMessage(currentPage.currentChatFriend.uuid, earliestMessageTimeStamp)
 }
 
-//监听私聊历史消息加载
+//监听私聊消息加载
 function onPrivateHistoryLoad(friendId, messages) {
     if (messages.length == 0) {
         $('#top').html('已经没有更多的历史消息');
@@ -261,11 +261,11 @@ function onPrivateHistoryLoad(friendId, messages) {
         return
     }
     var chatMessages = chatService.getPrivateMessages(friendId)
-    drawPrivateChatMessage(chatMessages)
+    renderPrivateChatMessage(chatMessages)
 }
 
 //绘制界面私聊消息
-function drawPrivateChatMessage(privateMessages, scrollToBottom) {
+function renderPrivateChatMessage(privateMessages, scrollToBottom) {
     var chatBoxContent = $("#chat-box-content");
     chatBoxContent.empty();
     privateMessages.forEach(function (message) {
@@ -331,11 +331,11 @@ function onGroupHistoryLoad(groupId, messages) {
     }
     ;
     var chatMessage = chatService.getGroupMessages(groupId)
-    drawGroupChatMessage(chatMessage)
+    renderGroupChatMessage(chatMessage)
 }
 
 //绘制群聊界面消息
-function drawGroupChatMessage(groupMessages, scrollToBottom) {
+function renderGroupChatMessage(groupMessages, scrollToBottom) {
     var currentUser = chatService.currentUser;
     var chatBoxContent = $("#group-chat-box-content");
     chatBoxContent.empty();
@@ -372,7 +372,7 @@ function onNewPrivateMessageReceive(friendId, chatMessage) {
     if (currentPage.page == Pages.contacts) {
         drawFriendList(chatService.friends)
     } else {
-        drawPrivateChatMessage(chatService.getPrivateMessages(friendId), true)
+        renderPrivateChatMessage(chatService.getPrivateMessages(friendId), true)
     }
 }
 
@@ -386,18 +386,18 @@ function onNewGroupMessageReceive(groupId, chatMessage) {
         groupItem.find(".message-count").text(group.unReadMessage);
         groupItem.find(".friend-item-message-badge").show();
     } else {
-        drawGroupChatMessage(chatService.getGroupMessages(groupId), true)
+        renderGroupChatMessage(chatService.getGroupMessages(groupId), true)
     }
 }
 
 //更新好友列表
 function onFriendListChange(friends) {
-    drawFriendList(friends)
+    renderFriendList(friends)
 }
 
 //更新群列表
 function onGroupListChange(groups) {
-    drawGroupList(groups)
+    renderGroupList(groups)
 }
 
 //显示群成员
