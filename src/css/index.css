@@ -526,7 +526,7 @@ html {
 	#group-member-layer {
 		position: fixed;
 		width: 375px;
-		height: 100%;
+		height: 600px;
 		background: #2c3e50;
 		z-index: 1999;
 		top: 0;
