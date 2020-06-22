@@ -28,8 +28,8 @@ function CurrentUser(uuid, name, avatar) {
 
 function IMService() {
     this.im = GoEasyIM.getInstance({
-        appkey: '',
-        host: 'testhangzhou.goeasy.io',
+        appkey: '您的appkey',
+        host: 'hangzhou.goeasy.io',
     });
     //当前“我”
     this.currentUser = null;
