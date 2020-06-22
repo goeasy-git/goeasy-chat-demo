@@ -438,13 +438,14 @@ html {
 */
 @media screen and (min-width: 481px){
 	#app {
-		width:373px;
+		width: 373px;
 		height: 600px;
 		color: #2c3e50;
 		box-shadow: 0px 0px 5px gray;
-		margin:0px auto;
+		margin: 0px auto;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+		overflow: hidden;
 	}
 
 	.login {
@@ -722,10 +723,10 @@ html {
 		line-height: 25px;
 		font-style: normal;
 	}
-	.chat-box-content{
-		height:440px;
+	.chat-box-content {
+		height: 440px;
 		padding-top: 80px;
-
+		overflow: auto;
 	}
 
 	.chat-box-friend-message-template {

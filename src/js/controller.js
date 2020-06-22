@@ -257,6 +257,7 @@ function loadPrivateHistory() {
 function onPrivateHistoryLoad(friendId, messages) {
     if (messages.length == 0) {
         $('#top').html('已经没有更多的历史消息');
+        $('#top').css({color: 'gray', textDecoration: 'none'});
         return
     }
     var chatMessages = chatService.getPrivateMessages(friendId)
@@ -325,6 +326,7 @@ function loadGroupHistory() {
 function onGroupHistoryLoad(groupId, messages) {
     if (messages.length == 0) {
         $('#group-top').html('已经没有更多的历史消息');
+        $('#group-top').css({color: 'gray', textDecoration: 'none'});
         return
     }
     ;
