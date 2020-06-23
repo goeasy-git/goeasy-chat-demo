@@ -370,9 +370,11 @@ function onNewPrivateMessageReceive(friendId, chatMessage) {
     let friend = chatService.friends[friendId];
     //如果当前窗口是在好友列表页面，只显示未读消息数
     if (currentPage.page == Pages.contacts) {
-        drawFriendList(chatService.friends)
+        renderFriendList(chatService.friends)
     } else {
-        renderPrivateChatMessage(chatService.getPrivateMessages(friendId), true)
+        if (friendId == currentPage.currentChatFriend.uuid) {
+            renderPrivateChatMessage(chatService.getPrivateMessages(friendId), true)
+        }
     }
 }
 
@@ -386,7 +388,9 @@ function onNewGroupMessageReceive(groupId, chatMessage) {
         groupItem.find(".message-count").text(group.unReadMessage);
         groupItem.find(".friend-item-message-badge").show();
     } else {
-        renderGroupChatMessage(chatService.getGroupMessages(groupId), true)
+        if (groupId == currentPage.currentChatGroup.uuid) {
+            renderGroupChatMessage(chatService.getGroupMessages(groupId), true)
+        }
     }
 }
 
